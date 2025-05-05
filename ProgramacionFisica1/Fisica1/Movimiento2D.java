@@ -1,18 +1,51 @@
-// Se define la clase movimiento 2D
-public class Movimiento2D extends Movimiento {
-    private final double g = 9.8;
-
-    @Override
-    public void calcular(Consola consola) {
-        double v0x = consola.leerDouble("Ingresa la velocidad inicial en X (m/s): ");
-        double v0y = consola.leerDouble("Ingresa la velocidad inicial en Y (m/s): ");
-        double t = consola.leerDoublePositivo("Ingresa el tiempo (s): ");
-
-        double x = v0x * t;
-        double y = v0y * t - 0.5 * g * t * t;
-
-        System.out.println("Posición en X: " + x + " metros");
-        System.out.println("Posición en Y: " + y + " metros");
-    }
+public Movimiento2D(double posicionX, double posicionY, double velocidadX, double velocidadY) {
+    this.posicionX = posicionX;
+    this.posicionY = posicionY;
+    this.velocidadX = velocidadX;
+    this.velocidadY = velocidadY;
 }
 
+// Método polimórfico: puede ser compartido por otras clases
+public void mover(double tiempo) {
+    this.posicionX += velocidadX * tiempo;
+    this.posicionY += velocidadY * tiempo;
+}
+
+// Encapsulamiento: getters y setters
+public double getPosicionX() {
+    return posicionX;
+}
+
+public void setPosicionX(double posicionX) {
+    this.posicionX = posicionX;
+}
+
+public double getPosicionY() {
+    return posicionY;
+}
+
+public void setPosicionY(double posicionY) {
+    this.posicionY = posicionY;
+}
+
+public double getVelocidadX() {
+    return velocidadX;
+}
+
+public void setVelocidadX(double velocidadX) {
+    this.velocidadX = velocidadX;
+}
+
+public double getVelocidadY() {
+    return velocidadY;
+}
+
+public void setVelocidadY(double velocidadY) {
+    this.velocidadY = velocidadY;
+}
+
+// Método útil para mostrar la posición actual
+public String obtenerPosicion() {
+    return "(" + posicionX + ", " + posicionY + ")";
+}
+}
